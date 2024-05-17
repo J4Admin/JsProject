@@ -83,7 +83,7 @@ summary,
 time,
 mark,
 audio,
-video {
+video,.navlink {
   margin: 0;
   padding: 0;
   border: 0;
@@ -169,13 +169,20 @@ nav ul {
   align-items: center;
   list-style-type: none;
 }
-nav li {
+nav .navlink {
   padding: 0 10px;
   font-size: 1.2em;
 }
-
-li:hover {
+/*  Li => .navlink*/
+.navlink:visited{
+  color:rgb(0, 102, 204);
+}
+.navlink:hover {
   color: #b1663c;
+} 
+/**Login Page */
+#login{
+  margin-top:15%;
 }
 #introduction {
   display: flex;
@@ -216,7 +223,44 @@ li:hover {
 .gallery img {
   width: 100%;
 }
-#contact {
+
+.navlink{
+  text-decoration: none;
+}
+.formSection {
+  width: 50%;
+  margin: auto;
+}
+.formSection > * {
+  text-align: center;
+}
+.formSection p {
+  text-align: center;
+}
+.formSection h2 {
+  margin-bottom: 20px;
+}
+.formSection form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formSection input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.formSection label {
+  margin: 2em 0 1em 0;
+}
+.formSection textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+/* #contact {
   width: 50%;
   margin: auto;
 }
@@ -246,6 +290,8 @@ li:hover {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+*/
+
 /* Ajout class btnFilter 1.2*/
 input[type="submit"],
 .btnFilter {
@@ -263,6 +309,9 @@ footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
+}
+.footerLogin{
+  margin-top:40%;
 }
 
 /* Propriétés Css >> Etapes 1.2 - Filtres Catégories */
