@@ -19,34 +19,44 @@
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
-            <ul>
+			<ul>
 				<li><a class="navlink" href="index.html">projets</a></li>
-				<li><a class="navlink" href="#contact">contact</a></li>
-				<li><a class="navlink" href="login.html">login</a></li>
+				<li><a class="navlink" href="index.html#Contact">contact</a></li>
+				<li><a class="navlink" id="navlogin" href="#">login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 
-		<section id="login" class="formSection">
+		<section id="login" class="section-form">
 			<h2>log in</h2>
-			
-			<form action="#" method="post">
 
+			<form id="form">
+
+				<!-- champ E-mail-->
+
+				<p id="error-message">Erreur dans l’identifiant ou le mot de passe.</p>
 				<label for="email">E-mail</label>
 				<input type="email" name="email" id="email">
 
-                <label for="password">Mot de passe</label>
-				<input type="password" name="hiddenPassword" id="hiddenPassword">
 
+				<!-- champ Mot de passe-->
+				<label for="password">Mot de passe</label>
+				<input type="password" name="hiddenpassword" id="password">
+
+				<!--bouton de validation-->
 				<input type="submit" value="Se connecter">
-                <p><a href="#"> Mot de passe oublié</a><p>
+
+				<!--lien Mot de passe oublié-->
+				<p><a href="#"> Mot de passe oublié</a>
+				<p>
+
 			</form>
 		</section>
 	</main>
 
-	<footer class="footerLogin">
+	<footer class="footerlogin">
 		<nav>
 			<ul>
 				<li>Mentions Légales</li>

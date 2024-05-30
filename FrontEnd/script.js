@@ -1,11 +1,14 @@
 // Variables globales
 const galleryDiv = document.querySelector(".gallery");
-const filterDiv = document.querySelector(".menuDeCategories")
-const apiUrl = "http://localhost:5678/api/works";
+const filterDiv = document.querySelector(".filters");
+const apiUrl = "http://localhost:5678/api";
+let btnFilter = document.querySelector("button");
 
-// Fonction pour récupérer les travaux de l'architecte
+// Interpolation ajouté avec succès !
+
+// récupére/stock les travaux de l'architecte et les convertis en JSON
 async function getWorks() {
-  const worksArchitect = await fetch(apiUrl);
+  const worksArchitect = await fetch(`${apiUrl}/works`);
   return await worksArchitect.json();
 }
 
@@ -19,11 +22,11 @@ async function viewWorks(category = "defaults") {
     if (category === "defaults") {
       return true; // Affiche tous les travaux si aucune catégorie sélectionnée
     } else {
-      return element.category.name === category; // Sinon affiche la catégorie selection 
+      return element.category.name === category; // Sinon affiche la catégorie selection
     }
   });
 
-  // Afficher les travaux filtrés.
+  // Affiche les travaux filtrés.
   filteredWorks.forEach((element) => {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
@@ -39,45 +42,68 @@ async function viewWorks(category = "defaults") {
 }
 
 // Fonction pour filtrer les travaux par catégorie.
-async function FilterWorks() {
+async function filterWorks() {
   const arrayCategorieFilter = await getWorks();
 
- 
- // Bouton "Tous", affiche tout les éléments de la galerie.
-  const btnAll = document.createElement("input");
-  btnAll.classList.add("btnFilter")
-  btnAll.value = "Tous";
+  // Bouton "Tous", affiche tout les éléments de la galerie.
+  const btnAll = document.createElement("button");
+
+  btnAll.textContent = "Tous";
   btnAll.type = "button";
-  btnAll.addEventListener("click", () => viewWorks()); // On dit que si le buton est cliqué il affiche tout les travaux.
-  filterDiv.appendChild(btnAll); // On définit L'enfant de menu catégorie btnAll( Le bouton "Tous").
+  btnAll.classList.add("active");
+  // On utilise la methode addEventListener afin de surveillier(monitoring) si l'utilisateur "click"
+  // Si Oui , il appelle la fonction viewWorks, pour afficher tout les travaux.
+  btnAll.addEventListener("click", () => {
+    let othersFilter = document.querySelectorAll(".filters button");
+
+    // Parcourir tous les filtres et supprimer la classe active
+    othersFilter.forEach((button) => {
+      button.classList.remove("active");
+      btnAll.classList.remove("active");
+    });
+    btnAll.classList.add("active");
+    viewWorks();
+  });
+
+  // On définit L'enfant de menu catégorie btnAll( Le bouton "Tous").
+  filterDiv.appendChild(btnAll);
 
   // Crée un ensemble(set), pour stocker les noms de catégorie.
-  const Categorie = new Set();
+  const categorie = new Set();
+
   arrayCategorieFilter.forEach((element) => {
-    Categorie.add(element.category.name); // On aurait pu ne pas faire de boucle et renseigné chaque catégories, 
+    categorie.add(element.category.name);
+    // On aurait pu ne pas faire de boucle et renseigné chaque catégories,
     // permet d'automatisé la tache et d'avoir un code plus facilement clair/maintenable.
   });
 
-  //génere et ajoute des boutons pour filtrer avec chaque catégorie 
-  Categorie.forEach((categoryName) => {
-    const btnFilter = document.createElement("input");
-    btnFilter.classList.add("btnFilter");
-    btnFilter.value = categoryName; // On ajoute la valeur qui contient le nom  pour chaque catégories.
+  //génere et ajoute des boutons pour filtrer avec chaque catégorie
+  categorie.forEach((categoryName) => {
+    let btnFilter = document.createElement("button");
+  
+    btnFilter.textContent = categoryName; // On ajoute la valeur qui contient le nom  pour chaque catégories.
     btnFilter.type = "button";
+    btnFilter.classList.add();
 
     btnFilter.addEventListener("click", () => {
-      viewWorks(categoryName) 
+      let allFilters = document.querySelectorAll(".filters button");
+
+      // Parcourir tous les filtres et supprimer la classe active
+      allFilters.forEach((button) => {
+        button.classList.remove("active");
+        btnAll.classList.remove("active");
+      });
+      btnFilter.classList.add("active");
+      viewWorks(categoryName);
     });
-// je redefinit "bntAll" enfant de menuDeCategorie, du au fait que la derniere déclaration soit en local et non global. 
-    filterDiv.appendChild(btnFilter,btnAll); 
+
+    // je redefinit "bntAll" enfant de filters, du au fait que la derniere déclaration soit en local et non global.
+    filterDiv.appendChild(btnFilter, btnAll);
   });
 
   // Appel pour afficher, Par default tout les travaux.
-  viewWorks(); 
-
+  viewWorks();
 }
 
 // Appel initial pour afficher les boutons de filtre.
-FilterWorks();
-
-
+filterWorks();
