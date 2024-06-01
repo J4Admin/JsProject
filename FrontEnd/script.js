@@ -59,7 +59,6 @@ async function filterWorks() {
     // Parcourir tous les filtres et supprimer la classe active
     othersFilter.forEach((button) => {
       button.classList.remove("active");
-      btnAll.classList.remove("active");
     });
     btnAll.classList.add("active");
     viewWorks();
@@ -79,19 +78,19 @@ async function filterWorks() {
 
   //génere et ajoute des boutons pour filtrer avec chaque catégorie
   categorie.forEach((categoryName) => {
-    let btnFilter = document.createElement("button");
-  
+    const btnFilter = document.createElement("button");
+
     btnFilter.textContent = categoryName; // On ajoute la valeur qui contient le nom  pour chaque catégories.
     btnFilter.type = "button";
     btnFilter.classList.add();
 
+    //monitoring sur l'evenement click, de "btnFilter"
     btnFilter.addEventListener("click", () => {
       let allFilters = document.querySelectorAll(".filters button");
 
       // Parcourir tous les filtres et supprimer la classe active
       allFilters.forEach((button) => {
         button.classList.remove("active");
-        btnAll.classList.remove("active");
       });
       btnFilter.classList.add("active");
       viewWorks(categoryName);

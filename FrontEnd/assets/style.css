@@ -137,7 +137,8 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 50px 25px;
+  
 }
  section {
   margin: 50px 0 ;
@@ -175,6 +176,11 @@ nav ul {
   display: flex;
   align-items: center;
   list-style-type: none;
+ 
+}
+nav img{
+  height: 25%;
+  width: 80%;
 }
 nav .navlink {
   padding: 0 10px;
@@ -220,10 +226,15 @@ nav .navlink {
 #introduction p {
   margin-bottom: 0.5em;
 }
-#portfolio h2 {
+#portfolio h2, .btn-custom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   text-align: center;
   margin-bottom: 1em;
+
 }
+
 
 .gallery {
   width: 100%;
@@ -259,6 +270,7 @@ nav .navlink {
   display: flex;
   flex-direction: column;
 }
+
 
 .section-form input {
   height: 50px;
@@ -362,4 +374,46 @@ footer nav ul {
 
 .display-message{
  visibility: visible !important;
+}
+
+/* Border In header*/
+header{
+  justify-content: space-between;
+  flex-flow: column;
+
+  }
+header border{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#000000;
+  width: 1440px;
+  height: 59px;
+  margin-left:-155px;
+  margin-top: -59px;
+  margin-bottom: 25px;
+
+  color: white;
+}
+header div{
+    display: flex;
+    justify-content: space-between;$
+    margin-top: 150px ;
+}
+
+
+/* btn Custom for Modal */
+.portfolio-title{
+  display:flex;
+  justify-content: center;
+}
+
+.btn-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration : none;
+  color: black;
+  margin-bottom: 30px;
+  margin-left: 30px;
 }
