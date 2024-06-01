@@ -83,7 +83,7 @@ summary,
 time,
 mark,
 audio,
-video {
+video,.navlink {
   margin: 0;
   padding: 0;
   border: 0;
@@ -137,11 +137,19 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 50px 25px;
+  
 }
-section {
-  margin: 50px 0;
+ section {
+  margin: 50px 0 ;
 }
+.filters{
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  
+}
+
 
 h1 {
   display: flex;
@@ -168,14 +176,32 @@ nav ul {
   display: flex;
   align-items: center;
   list-style-type: none;
+ 
 }
-nav li {
+nav img{
+  height: 25%;
+  width: 80%;
+}
+nav .navlink {
   padding: 0 10px;
   font-size: 1.2em;
 }
-
-li:hover {
+/*  Li => .navlink*/
+.navlink:visited{
+  color:#000000;
+}
+.navlink:hover {
   color: #b1663c;
+} 
+#navlogin{
+  font-weight: bold;
+  color:#000000;
+
+}
+
+/**Login Page */
+#login{
+  margin-top:15%;
 }
 #introduction {
   display: flex;
@@ -200,10 +226,15 @@ li:hover {
 #introduction p {
   margin-bottom: 0.5em;
 }
-#portfolio h2 {
+#portfolio h2, .btn-custom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   text-align: center;
   margin-bottom: 1em;
+
 }
+
 
 .gallery {
   width: 100%;
@@ -216,7 +247,45 @@ li:hover {
 .gallery img {
   width: 100%;
 }
-#contact {
+
+.navlink{
+  text-decoration: none;
+}
+.section-form {
+  width: 50%;
+  margin: auto;
+}
+.section-form > * {
+  text-align: center;
+}
+.section-form p {
+  text-align: center;
+}
+.section-form h2 {
+  margin-bottom: 20px;
+}
+.section-form form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.section-form input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.section-form label {
+  margin: 2em 0 1em 0;
+}
+.section-form textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+/* #contact {
   width: 50%;
   margin: auto;
 }
@@ -246,9 +315,11 @@ li:hover {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-/* Ajout class btnFilter 1.2*/
+*/
+
+/* Ajout style ".filters button" 1.2*/
 input[type="submit"],
-.btnFilter {
+.filters button{
   font-family: "Syne";
   font-weight: 700;
   color: white;
@@ -264,17 +335,17 @@ footer nav ul {
   justify-content: flex-end;
   margin: 2em;
 }
+.footerlogin{
+  margin-top:40%;
+}
 
 /* Propriétés Css >> Etapes 1.2 - Filtres Catégories */
 
-.menuDeCategories {
-  display: flex;
-  margin: 8% 18%;
-}
 
-.btnFilter {
+
+.filters button {
   height: 50px;
-  font-size: 1.2em;
+  font-size: 16px;
   width: auto;
   margin: auto 5px;
   padding: 0px 25px;
@@ -284,10 +355,65 @@ footer nav ul {
   box-shadow: none;
 }
 
-.btnFilter:active {
-  color: white;
-  background-color: #1d6154;
-  border: 1px solid #1d6154;
+.active {
+  color: white !important;
+  background-color: #1d6154 !important;
+  border: 1px solid #1d6154 !important;
 }
 
-/*** Fin Code- 1.2***/
+/*** Fin Code - 1.2***/
+/*** LoginPage -2.1  ***/
+
+
+/*** Fin Code - 2.1***/
+
+/*** LoginPage -2.2  ***/
+#error-message{
+  visibility: hidden;
+}
+
+.display-message{
+ visibility: visible !important;
+}
+
+/* Border In header*/
+header{
+  justify-content: space-between;
+  flex-flow: column;
+
+  }
+header border{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#000000;
+  width: 1440px;
+  height: 59px;
+  margin-left:-155px;
+  margin-top: -59px;
+  margin-bottom: 25px;
+
+  color: white;
+}
+header div{
+    display: flex;
+    justify-content: space-between;$
+    margin-top: 150px ;
+}
+
+
+/* btn Custom for Modal */
+.portfolio-title{
+  display:flex;
+  justify-content: center;
+}
+
+.btn-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration : none;
+  color: black;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}

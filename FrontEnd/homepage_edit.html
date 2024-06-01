@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
@@ -9,25 +10,33 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 		rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="script.js" defer></script>
+	<script src="edit.js" defer></script>
 
 </head>
 
 <body>
-	<header>
+	<header>		
+		<border>	
+			<i class="fa-regular fa-pen-to-square" aria-hidden="true"></i>Mode édition
+		</border>
 		<div>
 			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		
 			<nav>
 				<ul>
-					<li><a class="navlink" href="#">projets</a></li>
-					<li><a class="navlink" href="#contact">contact</a></li>
-					<li><a class="navlink" href="login.html">login</a></li>
+					<li><a class="navlink" href="index.html">projets</a></li>
+					<li><a class="navlink" href="index.html#contact">contact</a></li>
+					<li><a class="navlink" href="login.html">logout</a></li>
 					<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 				</ul>
 			</nav>
 		</div>
+	
 	</header>
 	<main>
 		<section id="introduction">
@@ -46,18 +55,15 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
-			<!-- Ajout du menu de catégories, .filters -->
-			<div class="filters ">
-				<!-- <button id="btnfilter" type="button">categoryName</button> -->
+			<div class="portfolio-title">
+				<h2>Mes Projets</h2>
+				<a href="#" class="btn-custom"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i>modifier</a>
 			</div>
-			<div class="gallery">
-				<!-- <figure> posédant <img src =""> & <figcaption>-->
-			</div>
+			<div class="gallery"></div>
 		</section>
 		<section id="contact" class="section-form">
-
-			<h2>Contact</h2>
+			
+			<h2 >Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
 			<form action="#" method="post">
 				<label for="name">Nom</label>
