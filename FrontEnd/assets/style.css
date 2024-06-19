@@ -176,11 +176,15 @@ nav ul {
   display: flex;
   align-items: center;
   list-style-type: none;
+  justify-content: space-between;
  
+}
+nav li{
+ margin-left: 1.2em;
 }
 nav img{
   height: 25%;
-  width: 80%;
+  width: 50%;
 }
 nav .navlink {
   padding: 0 10px;
@@ -206,6 +210,7 @@ nav .navlink {
 #introduction {
   display: flex;
   align-items: center;
+  margin: 100px;
 }
 #introduction figure {
   flex: 1;
@@ -226,7 +231,7 @@ nav .navlink {
 #introduction p {
   margin-bottom: 0.5em;
 }
-#portfolio h2, .btn-custom {
+#portfolio h2, .btn-edit {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -250,6 +255,7 @@ nav .navlink {
 
 .navlink{
   text-decoration: none;
+  color: #000000;
 }
 .section-form {
   width: 50%;
@@ -272,7 +278,7 @@ nav .navlink {
 }
 
 
-.section-form input {
+.section-form input, .modal-btn{
   height: 50px;
   font-size: 1.2em;
   border: none;
@@ -319,7 +325,7 @@ nav .navlink {
 
 /* Ajout style ".filters button" 1.2*/
 input[type="submit"],
-.filters button{
+.filters button, .modal-btn{
   font-family: "Syne";
   font-weight: 700;
   color: white;
@@ -363,7 +369,9 @@ footer nav ul {
 
 /*** Fin Code - 1.2***/
 /*** LoginPage -2.1  ***/
-
+#btn-submit{
+  cursor: pointer;
+}
 
 /*** Fin Code - 2.1***/
 
@@ -402,18 +410,210 @@ header div{
 }
 
 
-/* btn Custom for Modal */
+/* Modal */
 .portfolio-title{
   display:flex;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
-.btn-custom {
+.btn-edit {
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration : none;
   color: black;
-  margin-bottom: 30px;
-  margin-left: 30px;
+  margin: 0 30px 25px;
+}
+.hidden  {
+  display: none !important;
+}
+
+.modal,.display-modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.80) ;
+  
+}
+
+/* Visibility modal with btn-edit*/
+
+.modal{
+  visibility: hidden;
+}
+.display-modal{
+  visibility: visible;
+}
+
+.edit-work{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: 2%;
+  width: 80%;
+  height: 480px;
+  margin-left: 13%;
+  margin-top:0px;
+  margin-bottom: 1px;
+  padding-bottom: 30px;
+  border-bottom:1px solid #B3B3B3;
+}
+
+.work{
+  width: 90px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+/* Hide a text for each work*/
+.portfolio-title figcaption{
+ visibility: hidden;
+}
+
+.portfolio-title figure img{
+  box-sizing: border-box;
+  width:100%;
+  height: 100%;
+  
+}
+
+
+.ico-editwork{
+  height: 17px;
+  width: 17px;
+  font-size: 11px;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  box-sizing: border-box;
+  background-color: #000000;
+  border-radius: 10%;
+  color: white;
+  margin-bottom: 94px;
+  margin-right: -60px;
+  padding: 0%;
+  position: absolute;
+  cursor: pointer;
+
+}
+
+
+#btn-end{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  font-size: 25px;
+  
+}
+#btn-end input {
+  display: none;
+}
+
+.btn-close{
+  cursor: pointer;
+}
+
+
+.modal-wrapper{
+  border-radius: 1%;
+  background-color: white;
+  width: 630px;
+  height: 688px;
+  padding: 20px;
+}
+.modal-h2{
+  color:black;
+  font-size: 26px;
+  font-family:'Work Sans', sans-serif;
+  font-weight: normal;
+  margin-top: 25px;
+}
+
+.modal-btn{
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+  width: 36% !important;
+  height: 37px;
+  font-size: 17px;
+  
+ 
+}
+
+
+
+/* Modal 2 */
+.div-modal2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #E8F1F6;
+  border-radius: 3px;
+  height: 240px;
+  width: 420px;
+  margin: 0 110px;
+
+}
+
+.form2-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:74px;
+  color: grey;  
+  margin-bottom: -30px;
+}
+
+#input-file{
+ display: none;
+  
+}
+.div-modal2 label {
+  padding: 0 25px;
+
+}
+.div-modal2 p{
+  margin-top: -25px;
+}
+.modal-arrow{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 23px;
+  cursor: pointer;
+  margin-top: -22px;
+
+}
+#btn-back input {
+  display:none;
+}
+
+#modal-form{
+  display: flex;
+display: flex;    
+flex-flow: column nowrap;    
+width: 420px;    
+justify-content: center;      
+margin-left: -50px;
+
+}
+#modal-form #categorie{
+height: 50px;
+font-size: 1.2em;
+border: none;
+box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#modal-form label{
+  display: flex;
+  align-items: flex-start;
 }

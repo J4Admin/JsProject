@@ -1,7 +1,9 @@
+// import variables @ config.js
+import { apiUrl } from "./config.js";
 // Variables globales
 const galleryDiv = document.querySelector(".gallery");
 const filterDiv = document.querySelector(".filters");
-const apiUrl = "http://localhost:5678/api";
+
 let btnFilter = document.querySelector("button");
 
 // Interpolation ajouté avec succès !
@@ -104,5 +106,23 @@ async function filterWorks() {
   viewWorks();
 }
 
-// Appel initial pour afficher les boutons de filtre.
+// Appel initial,affiche les boutons de filtre.
 filterWorks();
+
+// Affiche le "mode Edition", dans la page d'acceuil.
+
+function isLogin() {
+  const token = window.localStorage.token;
+  const userId = window.localStorage.userId;
+  const headerBorder = document.getElementById("header-border");
+  const btnEdit = document.querySelector(".btn-edit");
+  const navLogin = document.getElementById("nav-3");
+
+  if (token && userId) {
+    headerBorder.classList.remove("hidden");
+    btnEdit.classList.remove("hidden");
+    filterDiv.classList.add("hidden");
+    navLogin.innerText = "Logout";
+  }
+}
+isLogin();
