@@ -16,13 +16,14 @@ let xModal2 = false;
 async function getWorks() {
   const worksArchitect = await fetch(`${apiUrl}/works`);
   return await worksArchitect.json();
+
 }
 
 // 3 - Modale
 
 // Afiche les travaux dans la modal 1
 async function viewEditWork(category = "defaults") {
-  const arrayWorks = await getWorks();
+  const arrayWorks = await getWorks(); 
 
   arrayWorks.forEach((element) => {
     const figure = document.createElement("figure");
@@ -126,7 +127,7 @@ async function getModalBack() {
     btnBack.addEventListener("click", function () {
       toggleModals(true, false);
     });
-  }
+  } 
 }
 
 function redirectAddModal() {
@@ -134,6 +135,7 @@ function redirectAddModal() {
   const h2FirstModal = document.getElementById("modal1-h2");
   const editWork = document.querySelector("section .edit-work");
   const btnBack = document.querySelector(".modal-arrow");
+
 
   if (btnRedirectAdd) {
     btnRedirectAdd.addEventListener("click", () => {
@@ -148,12 +150,13 @@ function redirectAddModal() {
 
       toggleModals(false, true);
     });
-  }
+  } 
 }
 
 getModalBack();
-redirectAddModal();
 
+
+// Crée un Observer, afin d'initialisé des fonctions quand la modal2 est présente. 
 const observer = new MutationObserver((mutationsList, observer) => {
   for (let mutation of mutationsList) {
     if (mutation.type === "childList") {
@@ -163,9 +166,8 @@ const observer = new MutationObserver((mutationsList, observer) => {
       if (newModals.length > 0) {
         redirectAddModal();
         viewImgSub();
-        // fonction - en cours 
-       // checkSubmit();
-
+        checkSubmit()
+        
         observer.disconnect();
         break;
       }
@@ -174,6 +176,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
+
 
 // Supression de travaux
 
@@ -220,45 +223,50 @@ async function viewImgSub() {
         inputFile.classList.add("hidden");
         modalBtn.classList.add("hidden");
         infoForm.classList.add("hidden");
-
+      
         imgSub.classList.remove("hidden");
+       
       };
       reader.readAsDataURL(file);
+      
+  
     }
+  
   });
 }
 
-// Fonction à revoir
-//async function checkSubmit() {
-//  const subCategorie = document.getElementById("title");
-//  const subTitle = document.getElementById("title");
+//async function checkSubmit(){
+//  const subCategorie = document.getElementById('title')
+//  const subTitle = document.getElementById('title')
 //  const errorSubmit2 = document.getElementById("error-message2");
-//  const checkBtn = document.querySelector(".valider-btn");
+//  const checkBtn =document.querySelector('.valider-btn')
 //
-//  checkBtn.addEventListener("click", (event) => {
-//    event.preventDefault();
+// 
 //
-//    if (subTitle.value !== "") {
-//      return true;
-//    } else {
-//      errorSubmit2.classList.remove("hidden");
-//    }
+//  checkBtn.addEventListener("click", (event)=>{
 //
-//    if (subCategorie.value !== 0) {
-//      return true;
-//    } else {
-//      errorSubmit2.classList.remove("hidden");
-//      return false;
-//    }
-//  });
+//    event.preventDefault()
+//  
+//  if(subTitle.value !== ""){
+//    return true
+//  } else {
+//    errorSubmit2.classList.remove('hidden')
+//   
+//  }
 //
-//  let formData = new FormData();
-//  formData.append(
-//    "categorie.id",
-//    subCategorie.id,
-//    "category.name",
-//    subCatégorie.value
-//  );
-//  formData.append("imageUrl", imgSub.src);
-//  formData.append("title", subTitle.value);
+//if (subCategorie.value !== 0){
+//  return true
+//  } else {
+//    errorSubmit2.classList.remove('hidden')
+//    return false
+//  }
+//
+// 
+//})
+//
+//let formData = new FormData();
+//formData.append('categorie.id', subCategorie.id, 'category.name' , subCatégorie.value)
+//formData.append('imageUrl', imgSub.src)
+//formData.append('title', subTitle.value)
+//    if()
 //}

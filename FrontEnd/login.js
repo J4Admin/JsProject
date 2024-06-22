@@ -59,7 +59,7 @@ async function loginSucces() {
     // contenu dans la réponse Post, à l'interieur de l'espace Local
     window.localStorage.setItem("userId", response.userId);
     window.localStorage.setItem("token", response.token);
-    // Fonction permetant de redirigé vers la page " homepage_edit", avec un delai de 1000 ms .
+    // Fonction permetant de redirigé vers la page " homepage_edit", avec un delai de 500 ms. -- Pour voir le retour Fetch Post .
     setTimeout(() => {
       document.location.href = "http://127.0.0.1:5500/FrontEnd/index.html";
     }, 500);
