@@ -1,14 +1,16 @@
 // correspond à la page de connexion
-// import variables @ config.js
+// import des variables depuis config.js
+
 import { apiUrl } from "./config.js";
-//// Variables globales
-const form = document.getElementById("form");
+
+// Variables globales
+const formLogin = document.getElementById("formlogin");
 let submitEmail = document.getElementById("email");
 let submitPassword = document.getElementById("password");
 const errorSubmit = document.getElementById("error-message");
 
-const headerBorder = document.getElementById("#header-border");
-
+// Test Formulaire
+// Test l'adresse email soummit
 function checkEmail(submitEmail) {
   const emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
 
@@ -20,6 +22,7 @@ function checkEmail(submitEmail) {
   }
 }
 
+// Test le password soummit
 function checkPassword(submitPassword) {
   const passwordRegExp = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{6,}$");
 
@@ -31,15 +34,9 @@ function checkPassword(submitPassword) {
   }
 }
 
-// fonction hide border
-
-// fonction display border
-
-const btnEdit = document.getElementsByClassName(".btn-edit");
-
 async function loginSucces() {
   const adminAcess = await fetch(`${apiUrl}/users/login`, {
-    method: "POST", // Méthode de la requête
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
@@ -50,31 +47,31 @@ async function loginSucces() {
     }),
   });
 
-  // Recuperation  de la reponse POST
+  // Recuperation  de la reponse API
   const response = await adminAcess.json();
 
-  // test si la valeur du POST est "OK" ( donc aucune erreur)
+  // Verifie si la valeur du POST est "OK" (=RegEx)
   if (adminAcess.ok) {
-    // conserve les données( valeurs ) lié au token et userId
+    // conserve les données ( valeurs ) lié au token et userId
     // contenu dans la réponse Post, à l'interieur de l'espace Local
     window.localStorage.setItem("userId", response.userId);
     window.localStorage.setItem("token", response.token);
-    // Fonction permetant de redirigé vers la page " homepage_edit", avec un delai de 1000 ms .
-    setTimeout(() => {
-      document.location.href = "http://127.0.0.1:5500/FrontEnd/index.html";
-    }, 500);
-    // fonction hide filter
+
+    // redirection vers la page " homepage_edit".
+    document.location.href = "http://127.0.0.1:5500/FrontEnd/index.html";
   }
 }
 
-form.addEventListener("submit", (event) => {
+// Ecoute les sumbits du formulaire
+formLogin.addEventListener("submit", (event) => {
   // Empêche le comportement par défaut du submit
   event.preventDefault();
-  // Ajoute 2 constantes = emailTrue / passwordTrue
+
+  // Recuperation des valeur bolean, des submit testé.
   const emailTrue = checkEmail(submitEmail);
   const passwordTrue = checkPassword(submitPassword);
-  // Crée un test demandant si les 2 variables sont égales à true
-  // (en type et en genre)
+
+  // appel la fonction loginSucces, sous condition bolean.
   if (emailTrue === true && passwordTrue === true) {
     loginSucces();
   }

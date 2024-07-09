@@ -1,14 +1,13 @@
-// import variables @ config.js
+// Correspond à la page principal
+// import des variables depuis config.js
 import { apiUrl } from "./config.js";
+
 // Variables globales
 const galleryDiv = document.querySelector(".gallery");
 const filterDiv = document.querySelector(".filters");
-
 let btnFilter = document.querySelector("button");
 
-// Interpolation ajouté avec succès !
-
-// récupére/stock les travaux de l'architecte et les convertis en JSON
+// Récupére les travaux de l'architecte et les convertis en JSON
 async function getWorks() {
   const worksArchitect = await fetch(`${apiUrl}/works`);
   return await worksArchitect.json();
@@ -22,9 +21,11 @@ async function viewWorks(category = "defaults") {
   // Filtre les travaux en fonction de la catégorie sélectionnée
   const filteredWorks = arrayWorks.filter((element) => {
     if (category === "defaults") {
-      return true; // Affiche tous les travaux si aucune catégorie sélectionnée
+      // Affiche tous les travaux si aucune catégorie sélectionnée
+      return true;
     } else {
-      return element.category.name === category; // Sinon affiche la catégorie selection
+      // Sinon affiche la catégorie selection
+      return element.category.name === category;
     }
   });
 
@@ -53,6 +54,7 @@ async function filterWorks() {
   btnAll.textContent = "Tous";
   btnAll.type = "button";
   btnAll.classList.add("active");
+
   // On utilise la methode addEventListener afin de surveillier(monitoring) si l'utilisateur "click"
   // Si Oui , il appelle la fonction viewWorks, pour afficher tout les travaux.
   btnAll.addEventListener("click", () => {
@@ -66,7 +68,7 @@ async function filterWorks() {
     viewWorks();
   });
 
-  // On définit L'enfant de menu catégorie btnAll( Le bouton "Tous").
+  // On définit L'enfant de menu catégorie, btnAll( Le bouton "Tous").
   filterDiv.appendChild(btnAll);
 
   // Crée un ensemble(set), pour stocker les noms de catégorie.
@@ -78,15 +80,16 @@ async function filterWorks() {
     // permet d'automatisé la tache et d'avoir un code plus facilement clair/maintenable.
   });
 
-  //génere et ajoute des boutons pour filtrer avec chaque catégorie
+  //Génere et Ajoute des boutons pour filtrer chaque catégories.
   categorie.forEach((categoryName) => {
     const btnFilter = document.createElement("button");
 
-    btnFilter.textContent = categoryName; // On ajoute la valeur qui contient le nom  pour chaque catégories.
+    //Ajoute la valeur qui contient le nom  pour chaque catégories
+    btnFilter.textContent = categoryName;
     btnFilter.type = "button";
     btnFilter.classList.add();
 
-    //monitoring sur l'evenement click, de "btnFilter"
+    //Monitoring sur l'évenement clic, de "btnFilter".
     btnFilter.addEventListener("click", () => {
       let allFilters = document.querySelectorAll(".filters button");
 
@@ -98,26 +101,25 @@ async function filterWorks() {
       viewWorks(categoryName);
     });
 
-    // je redefinit "bntAll" enfant de filters, du au fait que la derniere déclaration soit en local et non global.
     filterDiv.appendChild(btnFilter, btnAll);
   });
 
-  // Appel pour afficher, Par default tout les travaux.
+  // Afficher par 'default' tout les travaux.
   viewWorks();
 }
 
-// Appel initial,affiche les boutons de filtre.
+// Appel initial, affiche les boutons de filtre.
 filterWorks();
 
 // Affiche le "mode Edition", dans la page d'acceuil.
-
 function isLogin() {
   const token = window.localStorage.token;
   const userId = window.localStorage.userId;
+
   const headerBorder = document.getElementById("header-border");
   const btnEdit = document.querySelector(".btn-edit");
   const navLogin = document.getElementById("nav-3");
-
+  // Conditions, Token, userId existe.
   if (token && userId) {
     headerBorder.classList.remove("hidden");
     btnEdit.classList.remove("hidden");

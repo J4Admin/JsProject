@@ -33,18 +33,23 @@
       <section id="login" class="section-form">
         <h2>log in</h2>
 
-        <form id="form">
+        <form id="formlogin">
           <!-- champ E-mail-->
 
           <p id="error-message">
             Erreur dans l’identifiant ou le mot de passe.
           </p>
           <label for="email">E-mail</label>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" autocomplete="username" />
 
           <!-- champ Mot de passe-->
           <label for="password">Mot de passe</label>
-          <input type="password" name="hiddenpassword" id="password" />
+          <input
+            type="password"
+            name="hiddenpassword"
+            id="password"
+            autocomplete="current-password"
+          />
 
           <!--bouton de validation-->
           <input id="btn-submit" type="submit" value="Se connecter" />
